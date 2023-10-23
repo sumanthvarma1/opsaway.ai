@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      "colors": {
+        "purple": "#700877",
+        "white": "#fff"
+        },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,6 +19,13 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [ "fantasy" ],
+    // "winter"
+  },
+  fontFamily: {
+    'poppings': ['Poppins'],
+  },
 }
 export default config

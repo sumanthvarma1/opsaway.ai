@@ -18,10 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+.flip-transition {
+  transform: rotateX(0deg);
+  transition: transform 0.6s;
+}
+.flip-transition.flipped {
+  transform: rotateX(90deg);
 }
