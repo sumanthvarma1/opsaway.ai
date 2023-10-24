@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Wireframe14 from "./menu";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -32,23 +33,17 @@ const HomePage: React.FC = () => {
   };
 
   const handleClose = () => {
-    // Start the closing animation
     setIsMenuOpen(false);
 
-    // Wait for the animation to finish, then redirect to the homepage
     setTimeout(() => {
-      // Use Next.js's router to redirect
-      router.push("/"); // replace with your homepage URL
-    }, 300); // match this duration with your CSS transition duration
+      router.push("/");
+    }, 300);
   };
 
-  // Change text every few seconds
   useEffect(() => {
     const flipInterval = setInterval(() => {
-      // Trigger the flip effect
       setFlipped(true);
 
-      // After half the animation duration, change the text and reset the flip state
       setTimeout(() => {
         setActiveTextIndex((prevIndex) => (prevIndex + 1) % textOptions.length);
         setFlipped(false);
@@ -63,19 +58,26 @@ const HomePage: React.FC = () => {
       className="bg-cover bg-center h-screen"
       style={{ backgroundImage: `url('mask-group.png')` }}
     >
+      {/* Use duration-150, duration-300, duration-500, duration-700, duration-1000 for 150ms, 300ms, 500ms, 700ms, or 1000ms durations, respectively.
+      Timing Function (Easing): This controls the acceleration curve of the transition. Tailwind provides some easing function utilities:
+ease-linear
+ease-in
+ease-out
+ease-in-out 
+Delay: This controls if the transition will have a starting delay. Tailwind provides few delay classes like delay-75, delay-100, delay-150, delay-200, delay-300, delay-500, delay-700, and delay-1000 for delays of 75ms, 100ms, 150ms, 200ms, 300ms, 500ms, 700ms, and 1000ms, respectively.}
+  */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-gray-800 transform ease-in-out transition-all duration-300 ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 right-0 w-full h-full bg-gray-800 transform ease-in-out transition-all duration-700 ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         } z-50`}
       >
-        {/* 'X' button to close the menu */}
+        <Wireframe14 />
         <button
-          className="absolute top-0 right-0 m-6 text-white text-3xl"
+          className="absolute top-0 left-0 m-6 text-white text-3xl"
           onClick={handleClose}
         >
-          &times; {/* This is a simple 'X' character */}
+          &times;
         </button>
-        {/* Menu items here */}
       </div>
 
       <div className="navbar absolute top-0 left-0 right-0 z-10 bg-transparent flex justify-between items-start p-0 sm:pr-5">
