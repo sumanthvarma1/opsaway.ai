@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
       business with{" "}
     </>,
     <>
-      Unlocking Tomorrow's Potential
+      Unlocking Tomorrow&apos;s Potential
       <br />
       Today with our{" "}
     </>,
